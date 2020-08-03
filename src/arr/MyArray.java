@@ -67,6 +67,7 @@ public class MyArray {
      */
     public void resize() {
         int[] arrayNew = new int[array.length * 2];
+        //原数组，起始位置，新数组，起始位置，复制多长
         System.arraycopy(array, 0, arrayNew, 0, array.length);
         array = arrayNew;
     }
