@@ -2,6 +2,7 @@ package tree;
 
 import java.util.Arrays;
 import java.util.LinkedList;
+import java.util.Queue;
 import java.util.Stack;
 
 public class TreeITraversal {
@@ -113,7 +114,22 @@ public class TreeITraversal {
      * @Description: 层序遍历
      * @date 2020/8/15 15:13
      */
-    public static void levelOrderTraversal(TreeNode treeNode) {
+    public static void levelOrderTraversal(TreeNode root) {
+        Queue<TreeNode> queue = new LinkedList<>();
+        //新增
+        queue.offer(root);
+        while (!queue.isEmpty()) {
+            //获取头部节点
+            TreeNode node = queue.poll();
+            System.out.println(node.data);
+            if (node.leftChild != null) {
+                queue.offer(node.leftChild);
+            }
+            if (node.rightChild != null) {
+                queue.offer(node.rightChild);
+            }
+        }
+
 
     }
 
@@ -126,7 +142,9 @@ public class TreeITraversal {
         middleOrder(treeNode);*/
         /*System.out.println("后序遍历");
         afterOrder(treeNode);*/
-        preOrderTraveralWithStack(treeNode);
-        System.out.println("非递归前序遍历");
+        /*System.out.println("非递归前序遍历");
+        preOrderTraveralWithStack(treeNode);*/
+        System.out.println("层序遍历");
+        levelOrderTraversal(treeNode);
     }
 }
