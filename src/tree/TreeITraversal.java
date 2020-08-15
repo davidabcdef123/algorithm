@@ -2,8 +2,9 @@ package tree;
 
 import java.util.Arrays;
 import java.util.LinkedList;
+import java.util.Stack;
 
-public class TreeItar {
+public class TreeITraversal {
 
     /**
      * @param:
@@ -81,6 +82,41 @@ public class TreeItar {
         System.out.println(treeNode.data);
     }
 
+    /**
+     * @param:
+     * @return:
+     * @Description: 二叉树分递归前序遍历
+     * @date 2020/8/15 13:49
+     */
+    public static void preOrderTraveralWithStack(TreeNode root) {
+        Stack<TreeNode> stack = new Stack<>();
+        TreeNode treeNode = root;
+        while (treeNode != null || !stack.isEmpty()) {
+            //迭代访问节点的左孩子，并入栈
+            while (treeNode != null) {
+                System.out.println(treeNode.data);
+                stack.push(treeNode);
+                treeNode = treeNode.leftChild;
+            }
+            //如果节点没有左孩子，则弹出栈顶节点，访问节点右孩子
+            if (!stack.isEmpty()) {
+                treeNode = stack.pop();
+                treeNode = treeNode.rightChild;
+
+            }
+        }
+    }
+
+    /**
+     * @param:
+     * @return:
+     * @Description: 层序遍历
+     * @date 2020/8/15 15:13
+     */
+    public static void levelOrderTraversal(TreeNode treeNode) {
+
+    }
+
     public static void main(String[] args) {
         LinkedList<Integer> inputList = new LinkedList<Integer>(Arrays.asList(new Integer[]{3, 2, 9, null, null, 10, null, null, 8, null, 1,}));
         TreeNode treeNode = createBinaryTree(inputList);
@@ -88,7 +124,9 @@ public class TreeItar {
         preOrder(treeNode);*/
         /*System.out.println("中序遍历：");
         middleOrder(treeNode);*/
-        System.out.println("后序遍历");
-        afterOrder(treeNode);
+        /*System.out.println("后序遍历");
+        afterOrder(treeNode);*/
+        preOrderTraveralWithStack(treeNode);
+        System.out.println("非递归前序遍历");
     }
 }
