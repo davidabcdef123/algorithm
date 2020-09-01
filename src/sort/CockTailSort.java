@@ -2,6 +2,9 @@ package sort;
 
 import java.util.Arrays;
 
+/**
+ * 鸡尾酒排序
+ */
 public class CockTailSort {
 
     public static void main(String[] args) {
